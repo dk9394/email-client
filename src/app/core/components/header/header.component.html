@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <div class="logo-container">
+            <a class="navbar-brand" routerLink="/">Email Client</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <ng-container *ngIf="authService.getSignedinStatus() | async">
+                    <li class="user-name">Welcome, <span>{{ currentUser.username }}</span></li>
+                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="nav-link" [routerLink]="['/inbox']">Inbox</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link signout" (click)="onSignOut()">Sign out</a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="!(authService.getSignedinStatus() | async)">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" [routerLink]="['/auth/signin']">Sign in</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" [routerLink]="['/auth/signup']">Sign up</a>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</nav>

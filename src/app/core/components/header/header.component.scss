@@ -1,0 +1,27 @@
+.logo-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-collapse {
+  @media screen and (min-width: 576px) {
+    flex-grow: initial;
+  }
+}
+.user-name {
+  color: #d6cece;
+  line-height: 40px;
+  margin-right: 30px;
+  background: #3c6bd4;
+  padding: 0 15px;
+  border-radius: 5px;
+  span {
+    color: #fff;
+    font-size: 105%;
+  }
+}
+
+.signout {
+  color: #ce0a49 !important;
+  cursor: pointer;
+}

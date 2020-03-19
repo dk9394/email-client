@@ -1,0 +1,17 @@
+<div class="form-group">
+    <label [for]="generateId(label)">{{ label }}</label>
+    <input [id]="generateId(label)" [type]="inputType" class="form-control" [formControl]="control"
+        [ngClass]="{'is-invalid': checkValidity() || classNames}" autocomplete="new-password">
+    <ng-container *ngIf="checkValidity()">
+        <div *ngIf="control.errors.required" class="invalid-feedback">This is required field!</div>
+        <div *ngIf="control.errors.minlength" class="invalid-feedback">
+            Minimum {{control.errors.minlength.requiredLength}} letters required!
+        </div>
+        <div *ngIf="control.errors.notAvailable" class="invalid-feedback">This Username is not available!</div>
+        <div *ngIf="control.errors.maxlength" class="invalid-feedback">
+            Maximum {{control.errors.maxlength.requiredLength}} letters are allowed!
+        </div>
+        <div *ngIf="control.errors.pattern" class="invalid-feedback">Only small Alphabets and Numbers are allowed!</div>
+    </ng-container>
+    <div *ngIf="classNames" class="invalid-feedback">Password is not matching!</div>
+</div>

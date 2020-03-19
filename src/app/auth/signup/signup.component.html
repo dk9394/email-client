@@ -1,0 +1,17 @@
+<app-page-header>{{ title }}</app-page-header>
+<div class="row">
+    <div class="col-sm-10 col-md-7 col-lg-5">
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" [class.is-invalid]="!signupForm.valid">
+            <app-textbox [control]="signupForm.controls.username" label="Username" inputType="text"></app-textbox>
+            <app-textbox #passwordRef [control]="signupForm.controls.password" label="Password" inputType="password"
+                [classNames]="checkMatchError()">
+            </app-textbox>
+            <app-textbox #confirmPasswordRef [control]="signupForm.controls.passwordConfirmation"
+                label="Confirm Password" inputType="password" [classNames]="checkMatchError()">
+            </app-textbox>
+            <div class="btns">
+                <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
